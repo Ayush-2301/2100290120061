@@ -20,10 +20,6 @@ export default async function page({ searchParams }: paramsProps) {
   const country = searchParams.search || null;
   const offset = (page - 1) * pageLimit;
 
-  // const res = await fetch(
-  //   `https://api.slingacademy.com/v1/sample-data/users?offset=${offset}&limit=${pageLimit}` +
-  //     (country ? `&search=${country}` : "")
-  // );
   //localhost:3000/categories/amazon/products?top=10&page=1&minPrice=100&maxPrice=500&sort=asc&type=price
 
   const minPrice = 100;
