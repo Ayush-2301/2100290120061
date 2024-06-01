@@ -20,14 +20,23 @@ export default async function page({ searchParams }: paramsProps) {
   const country = searchParams.search || null;
   const offset = (page - 1) * pageLimit;
 
-  const res = await fetch(
-    `https://api.slingacademy.com/v1/sample-data/users?offset=${offset}&limit=${pageLimit}` +
-      (country ? `&search=${country}` : "")
-  );
-  const productsRes = await res.json();
-  const totalUsers = productsRes.total_users; //1000
-  const pageCount = Math.ceil(totalUsers / pageLimit);
-  const employee: Products[] = productsRes.users;
+  // const res = await fetch(
+  //   `https://api.slingacademy.com/v1/sample-data/users?offset=${offset}&limit=${pageLimit}` +
+  //     (country ? `&search=${country}` : "")
+  // );
+  //localhost:3000/categories/amazon/products?top=10&page=1&minPrice=100&maxPrice=500&sort=asc&type=price
+
+  const minPrice = 100;
+  const maxPrice = 500;
+  const catagoryname = "amazon";
+  const res =
+    await fetch(`http://localhost:3000/categories/${catagoryname}/products?top=${pageLimit}&page=${page}&minPrice=${minPrice}&maxPrice=${maxPrice}&sort=asc&type=price
+`);
+  // console.log(await resjson());
+  const productsRes = (await res.json()) as any;
+  const totalProducts = productsRes.length; //1000
+  const pageCount = Math.ceil(totalProducts / pageLimit);
+  const products: Products[] = productsRes.products;
   return (
     <>
       <div className="flex-1 space-y-4  p-4 md:p-8 pt-6">
@@ -44,8 +53,7 @@ export default async function page({ searchParams }: paramsProps) {
           searchKey="country"
           pageNo={page}
           columns={columns}
-          totalUsers={totalUsers}
-          data={employee}
+          data={products}
           pageCount={pageCount}
         />
       </div>

@@ -21,31 +21,27 @@ export const columns: ColumnDef<Products>[] = [
         aria-label="Select row"
       />
     ),
-    enableSorting: false,
+    enableSorting: true,
     enableHiding: false,
   },
   {
-    accessorKey: "first_name",
+    accessorKey: "productname",
     header: "NAME",
   },
   {
-    accessorKey: "country",
-    header: "COUNTRY",
+    accessorKey: "price",
+    header: "PRICE",
   },
   {
-    accessorKey: "email",
-    header: "EMAIL",
+    accessorKey: "rating",
+    header: "RATING",
   },
   {
-    accessorKey: "job",
-    header: "COMPANY",
+    accessorKey: "discount",
+    header: "DISCOUNT",
   },
   {
-    accessorKey: "gender",
-    header: "GENDER",
-  },
-  {
-    id: "actions",
-    cell: ({ row }) => <CellAction data={row.original} />,
+    accessorKey: "availability",
+    header: "AVAILABILITY",
   },
 ];
