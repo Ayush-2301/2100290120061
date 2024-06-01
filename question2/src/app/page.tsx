@@ -36,7 +36,7 @@ export default async function page({ searchParams }: paramsProps) {
             title={`Employee (${totalUsers})`}
             description="Manage employees (Server side table functionalities.)"
           /> */}
-          <h1>{totalUsers}</h1>
+          {/* <h1>{totalUsers}</h1> */}
         </div>
         <Separator />
 
