@@ -37,6 +37,7 @@ interface DataTableProps<TData, TValue> {
   data: TData[];
   searchKey: string;
   pageNo: number;
+  totalProducts: number;
   pageSizeOptions?: number[];
   pageCount: number;
   searchParams?: {
@@ -49,6 +50,7 @@ export function ProductsTable<TData, TValue>({
   data,
   pageNo,
   searchKey,
+  totalProducts,
   pageCount,
   pageSizeOptions = [10, 20, 30, 40, 50],
 }: DataTableProps<TData, TValue>) {
@@ -256,7 +258,7 @@ export function ProductsTable<TData, TValue>({
               onClick={() => table.setPageIndex(0)}
               disabled={!table.getCanPreviousPage()}
             >
-              <ChevronRightIcon className="h-4 w-4" aria-hidden="true" />
+              <ChevronLeftIcon className="h-4 w-4" aria-hidden="true" />
             </Button>
             <Button
               aria-label="Go to previous page"

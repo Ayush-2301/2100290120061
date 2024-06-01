@@ -34,7 +34,7 @@ export default async function page({ searchParams }: paramsProps) {
 `);
   // console.log(await resjson());
   const productsRes = (await res.json()) as any;
-  const totalProducts = productsRes.length; //1000
+  const totalProducts = productsRes.products.length; //1000
   const pageCount = Math.ceil(totalProducts / pageLimit);
   const products: Products[] = productsRes.products;
   return (
@@ -52,6 +52,7 @@ export default async function page({ searchParams }: paramsProps) {
         <ProductsTable
           searchKey="country"
           pageNo={page}
+          totalProducts={totalProducts}
           columns={columns}
           data={products}
           pageCount={pageCount}
